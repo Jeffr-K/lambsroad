@@ -1,6 +1,7 @@
 package com.lambsroad.lambsroad.domain.user.dto
 
 data class UserDeleteDto(
+    val id: Long,
     val username: String,
     val password: String,
     val email: String,

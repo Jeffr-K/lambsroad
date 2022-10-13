@@ -18,7 +18,6 @@ class UserController {
 
     @PostMapping("/user")
     fun createUser(@RequestBody userCreateDto: UserCreateDto): ResponseEntity<Any> {
-        println("들어옴")
         val result = userService.create(modelMapper.map(userCreateDto, User::class.java))
         return ResponseEntity.ok().body(result)
     }
@@ -37,8 +36,13 @@ class UserController {
 
     @GetMapping("/user/{id}")
     fun getUser(@PathVariable id: Long): ResponseEntity<Any> {
-        println("들어옴")
         val result = userService.getUser(id)
+        return ResponseEntity.ok().body(result)
+    }
+
+    @GetMapping("/users")
+    fun getUsers(): ResponseEntity<MutableIterable<User>> {
+        val result = userService.getUsers()
         return ResponseEntity.ok().body(result)
     }
 }
